@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { ThemeContext } from '../contexts/ThemeContext';
+import { GlobalContext } from '../contexts/GlobalContext';
 
 export const GlobalContextProvider = ({ children }) => {
     const [theme, setTheme] = useState("teste");
 
 
     return (
-        <ThemeContext.Provider value={{
+        <GlobalContext.Provider value={{
 
             theme,
 
@@ -14,6 +14,6 @@ export const GlobalContextProvider = ({ children }) => {
 
         }}>
             {children}
-        </ThemeContext.Provider>
+        </GlobalContext.Provider>
     );
 };

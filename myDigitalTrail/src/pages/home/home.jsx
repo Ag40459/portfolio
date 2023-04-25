@@ -1,21 +1,16 @@
 import { useContext } from 'react';
-import { ThemeContext } from '../../contexts/ThemeContext';
+import { GlobalContext } from '../../contexts/GlobalContext';
+import Navbar from '../../components/NavBar/navBar';
 import './home.css'
 
 function Home() {
 
-  const { theme, toggleTheme } = useContext(ThemeContext);
+  const { theme, toggleTheme } = useContext(GlobalContext);
 
   return (
     <div>
 
-      <h1>{theme}</h1>
-      <h1>Home</h1>
-      <h1>Home</h1>
-      <h1>Home</h1>
-      <h1>Home</h1>
-      <h1>Home</h1>
-      <h1>Home</h1>
+
     </div>
 
   )
