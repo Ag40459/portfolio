@@ -5,15 +5,18 @@ import App from './router';
 import { BrowserRouter } from 'react-router-dom';
 import { GlobalContextProvider } from '../src/hooks/globalContextProvider';
 import Navbar from './components/NavBar/navBar';
+import { ThemeProvider } from "./contexts/ThemeContext";
 
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <GlobalContextProvider>
-      <BrowserRouter>
-        <Navbar />
-        <App />
-      </BrowserRouter>
+      <ThemeProvider>
+        <BrowserRouter>
+          <Navbar />
+          <App />
+        </BrowserRouter>
+      </ThemeProvider>
     </GlobalContextProvider>
   </React.StrictMode>
-)
+);

@@ -22,6 +22,43 @@ React Router Dom: Essa biblioteca será utilizada para gerenciar as rotas do apl
 
 Styled Components: A biblioteca Styled Components será adotada para a estilização dos componentes do projeto, permitindo a criação de estilos de forma mais modular e legível.
 
+Estrutura de Pastas
+
+├── documents
+│   └── estruturaDePastas.md
+├── src
+│   ├── components
+│   │   ├── example
+│   │   │   ├── example.css
+│   │   │   └── example.jsx
+│   │   └── NavBar
+│   │       ├── navBar.css
+│   │       └── navBar.jsx
+│   ├── contexts
+│   │   └── GlobalContext.jsx
+│   ├── hooks
+│   │   └── globalContextProvider.jsx
+│   ├── pages
+│   │   ├── about
+│   │   │   ├── about.css
+│   │   │   └── about.jsx
+│   │   ├── contact
+│   │   │   ├── contact.css
+│   │   │   └── contact.jsx
+│   │   ├── home
+│   │   │   ├── home.css
+│   │   │   └── home.jsx
+│   │   └── projects
+│   │       ├── projects.css
+│   │       └── projects.jsx
+│   ├── index.css
+│   ├── index.jsx
+│   └── router.jsx
+├── index.html
+├── package.json
+└── package-lock.json
+
+
 Como Executar o Projeto
 Certifique-se de ter o Node.js instalado em sua máquina.
 Faça o download ou clone este

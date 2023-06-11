@@ -1,14 +1,25 @@
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
-import { GlobalContext } from "../../contexts/GlobalContext";
-import { slide as Menu } from "react-burger-menu";
+import { ThemeContext } from "../../contexts/ThemeContext";
 import "./navBar.css";
+import logo from "../../assets/svgviewer-output.svg";
+import sun from "../../assets/sun.svg";
+import moon from "../../assets/moon.svg";
 
 const Navbar = () => {
-  const { user } = useContext(GlobalContext);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { isDarkTheme, toggleTheme } = useContext(ThemeContext);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const closeModal = () => {
+    setIsMenuOpen(false);
+  };
 
   return (
-    <nav className="navbar">
+    <nav className={`navbar ${isDarkTheme ? "dark-theme" : ""}`}>
       <div className="nav-container">
         <div className="logo-container">
           <a href="#" className="logo">
@@ -18,49 +29,82 @@ const Navbar = () => {
         <div className="menu-container">
           <ul className="menu">
             <li>
-              <Link to="/">Home</Link>
+              <a href="/">About me</a>
             </li>
             <li>
-              <Link to="/about">About</Link>
+              <a href="/about">Service</a>
             </li>
             <li>
-              <Link to="/projects">Projects</Link>
+              <a href="/projects">Projects</a>
             </li>
             <li>
-              <Link to="/contact">Contact</Link>
+              <a href="/contact">Contact</a>
             </li>
           </ul>
         </div>
-        <div className="button-container">
-          <a href="#" className="button">
-            Button
-          </a>
+        <div className="theme-toggle">
+          <button className="theme-button" onClick={toggleTheme}>
+            <img
+              style={{ width: "3rem" }}
+              src={isDarkTheme ? moon : sun}
+              alt={isDarkTheme ? "Light Theme" : "Dark Theme"}
+              className="theme-icon"
+            />
+          </button>
         </div>
+        <div className="hamburger">
+          <div
+            className={`hamburger-menu ${
+              isMenuOpen ? "hamburger-rotate " : "hamburger-menu"
+            }`}
+            onClick={toggleMenu}
+          >
+            <img
+              style={{ width: "3rem" }}
+              src={logo}
+              alt="Menu"
+              className="hamburger-icon"
+            />
+          </div>
+        </div>
+        {isMenuOpen && (
+          <div className="modal" onClick={closeModal}>
+            <div className="modal-content">
+              <span className="close" onClick={closeModal}>
+                &times;
+              </span>
+
+              <div className="menu-vertical">
+                <ul>
+                  <li>
+                    <a href="/">About me</a>
+                  </li>
+                  <li>
+                    <a href="/about">Service</a>
+                  </li>
+                  <li>
+                    <a href="/projects">Projects</a>
+                  </li>
+                  <li style={{ paddingBottom: "3rem" }}>
+                    <a href="/contact">Contact</a>
+                  </li>
+                  <div className="theme-toggle">
+                    <img
+                      onClick={toggleTheme}
+                      style={{ width: "3rem" }}
+                      src={isDarkTheme ? sun : moon}
+                      alt={isDarkTheme ? "Light Theme" : "Dark Theme"}
+                      className="theme-icon"
+                    />
+                  </div>
+                </ul>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
-      <Menu right disableAutoFocus>
-        <ul className="menu-vertical">
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/about">About</Link>
-          </li>
-          <li>
-            <Link to="/projects">Projects</Link>
-          </li>
-          <li>
-            <Link to="/contact">Contact</Link>
-          </li>
-          <li>
-            <a href="#" className="button" id="buttonHamburguer">
-              Button
-            </a>
-          </li>
-        </ul>
-      </Menu>
     </nav>
   );
 };
 
 export default Navbar;
-
